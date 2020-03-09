@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+IMMERSED_VERSION=1.1.1
+IMMERSED_OCULUS_KEY=
+IMMERSED_USERNAME=
+
+
+
