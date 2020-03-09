@@ -29,3 +29,6 @@ If you've provided your Immersed username and
 Oculus key in `env.sh`, authorization will
 automatically be performed during the build process
 and persisted to the built Docker image.
+
+Check out ImmersedVR's Discord community for more
+information: https://immersedvr.com/community
