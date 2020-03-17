@@ -13,6 +13,12 @@ This will grant XSession access to the running
 container and run the container in `host`
 network mode.
 
+If you'd like to run the Intel Media SDK image,
+set the `USE_INTEL_MEDIA_SDK` environment variable
+to `true`. To utilize `nvidia-docker` and take
+advantage of host GPU, set the `USE_NVIDIA_GPU`
+environment variable to `true`.
+
 Credentials are persisted in a Docker volume 
 (`/root/.Immersed`, inside the container), even for
 multiple Immersed versions or containers. To reset

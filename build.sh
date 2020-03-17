@@ -8,3 +8,8 @@ docker build \
        --build-arg IMMERSED_USERNAME=$IMMERSED_USERNAME \
        --build-arg IMMERSED_VERSION=$IMMERSED_VERSION \
        -t schrodingersket/immersed:$IMMERSED_VERSION .
+
+docker build \
+       --build-arg IMMERSED_VERSION=$IMMERSED_VERSION \
+       -f Dockerfile.IntelMediaSDK \
+       -t schrodingersket/immersed:$IMMERSED_VERSION-intel-media-sdk .

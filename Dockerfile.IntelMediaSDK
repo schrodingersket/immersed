@@ -1,0 +1,48 @@
+ARG IMMERSED_VERSION=1.1.1
+
+FROM schrodingersket/immersed:${IMMERSED_VERSION}
+
+# Install cmake
+#
+RUN apt-get update -y && \
+    apt-get install -y automake \
+                       build-essential \
+                       cmake \
+                       git \
+                       libdrm-dev \
+                       libtool \
+                       libx11-dev \
+                       lsb-release \
+                       meson \
+                       pkg-config
+
+ARG INTEL_MEDIA_SDK_VERSION=19.4.0
+ARG LIBVA_VERSION=2.7.0.pre1
+
+# Build in root home
+#
+WORKDIR /root/build
+
+# Build libva
+#
+RUN git clone https://github.com/intel/libva.git && \
+    cd libva && \
+    git checkout ${LIBVA_VERSION} && \
+    bash autogen.sh && \
+    make && \
+    make install
+
+# Fetch Intel Media SDK package
+#
+RUN wget https://github.com/Intel-Media-SDK/MediaSDK/archive/intel-mediasdk-${INTEL_MEDIA_SDK_VERSION}.tar.gz
+
+# https://github.com/Intel-Media-SDK/MediaSDK/wiki/Build-Media-SDK-on-Ubuntu
+#
+RUN tar -xzf intel-mediasdk-${INTEL_MEDIA_SDK_VERSION}.tar.gz && \
+    cd MediaSDK-intel-mediasdk-${INTEL_MEDIA_SDK_VERSION} && \
+    mkdir build && \
+    cd build && \
+    cmake .. && \
+    make && \
+    make install
+     
