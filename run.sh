@@ -13,7 +13,6 @@ NVIDIA_GPU=
 #
 xhost local:$USER
 
-#-v immersed:/root \
 # Run container
 #
 docker run -ti \
@@ -21,8 +20,8 @@ docker run -ti \
 	   -h $(hostname) \
 	   --name=immersed \
 	   --net=host \
-	   -v immersed:/root \
 	   -v /tmp/.X11-unix:/tmp/.X11-unix \
+           -v immersed:/root \
 	   -e DISPLAY=unix$DISPLAY \
 	   $NVIDIA_GPU \
 	   schrodingersket/immersed:$IMMERSED_VERSION$VERSION_MODIFIER "$@"
